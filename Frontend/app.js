@@ -21,6 +21,11 @@ const App = () => {
     setResponse(res.data.response);
     TTS.speak(res.data.response); // Bot speaks the answer
   };
+const addReminder = async (task, time) => {
+  await axios.post("http://127.0.0.1:8000/reminder", { task, time });
+  TTS.speak(`Reminder set for ${task} at ${time}`);
+};
+
 
   return (
     <View>
